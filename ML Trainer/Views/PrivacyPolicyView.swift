@@ -16,18 +16,11 @@ struct PrivacyPolicyView: View {
             Section {
                 TitleLabelView(titleText: "Privacy Policy", iconSystemName: "lock.fill", color: .blue)
                     .padding()
-            }
-            
-            Section {
-                Text("ML Trainer presents a unique user experience allowing the camera’s to interact with the world you around you!")
+                
+                Text("ML Trainer presents a unique user experience allowing the camera’s to interact with the world you around you! \n\nIn order for augmented reality to be possible, this app requires access to your device's camera.")
                     .padding()
             }
-            
-            Section {
-                Text("In order for augmented reality to be possible, this app requires access to your device's camera.")
-                    .padding()
-            }
-            
+
             
             Section {
                 TitleLabelView(titleText: "Functional Data", iconSystemName: "camera.fill", color: .blue)
@@ -40,12 +33,6 @@ struct PrivacyPolicyView: View {
                 TitleLabelView(titleText: "Personal Data", iconSystemName: "person.2.fill", color: .blue)
                 
                 Text("Every time the application is closed, all world tracking data is deleted. \n\nYour camera data is never stored remotely, given to third parties, or used for any non-functional/entertainment purposes at any time.")
-                    .padding()
-            }
-            
-            Section {
-                Text("For additional questions, please reach out via email: \n\nprivacy@nearfuture.marketing")
-                    .multilineTextAlignment(.center)
                     .padding()
             }
             
@@ -73,7 +60,7 @@ struct PrivacyPolicyView: View {
                     .padding()
                 }
                 .sheet(isPresented: $showSourceCode) {
-                    WebView(url: "https://github.com/caseypollock/The-Big-Sky-Above-Us--2017-Version-/blob/master/The%20Big%20Sky%20Above%20Us/ViewController.swift")
+                    WebView(url: "https://github.com/caseypollock/ML-Trainer/blob/main/ML%20Trainer/Views/MLTrainerApp.swift")
                 }
             }
             

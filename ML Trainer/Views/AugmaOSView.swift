@@ -428,11 +428,10 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate {
      }
      */
     
-    let testNode = SCNScene(named: "art.scnassets/")!.rootNode
     
     func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval) {
         DispatchQueue.main.async {
-            print("WILL UPDATE!")
+//            print("WILL UPDATE!")
         }
     }
     

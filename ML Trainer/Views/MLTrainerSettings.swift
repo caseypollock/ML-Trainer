@@ -200,7 +200,7 @@ struct MLTrainerSettings: View {
             Section {
                 LazyVStack {
                     Spacer(minLength: 24)
-                    Text("Thank you for using this app!")
+                    Text("Thank you for using ML Trainer!")
                         .bold()
                         .multilineTextAlignment(.center)
                     

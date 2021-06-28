@@ -132,9 +132,13 @@ struct MLTrainerApp: View {
                             }
                             let newScan = self.sceneView.snapshot()
                             scannedTrainingData.append(newScan)
+                        if scannedTrainingData.count == 1 {
+                            statusLabel = "\(scannedTrainingData.count) New Scan!"
+                        } else {
                             statusLabel = "\(scannedTrainingData.count) New Scans!"
-                            showTrashcan = true
-                            augmaOS.hapticTap()
+                        }
+                        showTrashcan = true
+                        augmaOS.hapticTap()
                     }, label: {
                         SFSymbolCircleButton()
                     })
@@ -145,7 +149,12 @@ struct MLTrainerApp: View {
                             userSettings.scansRemaining -= 1
                             let newScan = self.sceneView.snapshot()
                             scannedTrainingData.append(newScan)
-                            statusLabel = "\(scannedTrainingData.count) New Scans!"
+                            if scannedTrainingData.count == 1 {
+                                statusLabel = "\(scannedTrainingData.count) New Scan!"
+                            } else {
+                                statusLabel = "\(scannedTrainingData.count) New Scans!"
+                            }
+                            
                             if userSettings.scansRemaining <= 0 {
                                 timer.invalidate()
                                 recordingScans = false
@@ -238,7 +247,11 @@ struct MLTrainerApp: View {
                     }
                     let newScan = self.sceneView.snapshot()
                     scannedTrainingData.append(newScan)
-                    statusLabel = "\(scannedTrainingData.count) New Scans!"
+                    if scannedTrainingData.count == 1 {
+                        statusLabel = "\(scannedTrainingData.count) New Scan!"
+                    } else {
+                        statusLabel = "\(scannedTrainingData.count) New Scans!"
+                    }
                     showTrashcan = true
                     augmaOS.hapticTap()
                 }, label: {
@@ -252,7 +265,11 @@ struct MLTrainerApp: View {
                         userSettings.scansRemaining -= 1
                         let newScan = self.sceneView.snapshot()
                         scannedTrainingData.append(newScan)
-                        statusLabel = "\(scannedTrainingData.count) New Scans!"
+                        if scannedTrainingData.count == 1 {
+                            statusLabel = "\(scannedTrainingData.count) New Scan!"
+                        } else {
+                            statusLabel = "\(scannedTrainingData.count) New Scans!"
+                        }
                         if userSettings.scansRemaining <= 0 {
                             timer.invalidate()
                             recordingScans = false
