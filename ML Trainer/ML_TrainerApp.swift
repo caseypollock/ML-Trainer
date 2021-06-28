@@ -11,7 +11,7 @@ import SwiftUI
 struct ML_TrainerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MLTrainerApp(userSettings: UserSettings())
         }
     }
 }
