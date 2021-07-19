@@ -143,30 +143,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    
-    func checkDeviceCompatibility() {
-        //Automatically improve the AR configuration if possible!
-        if #available(iOS 13, *) {
-            if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth) {
-                configuration.frameSemantics = .personSegmentationWithDepth
-                log(note: "---> AugmaOS: This device supports depth segmentation, rendering AR content using frame semantics! \n")
-            } else {
-                log(note: "---> AugmaOS: This device does not support segmentation with depth, rendering AR content without frame semantics! \n")
-            }
-        } else {
-            log(note: "---> AugmaOS: This device has not updated to iOS 13, rendering AR content in backwards compatible mode! \n")
-        }
-    }
-    
-    
-    func voice(text: String) {
-        //Play a synthesized voice from a string!
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-        utterance.rate = 0.1
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
-    }
+
     
     func toggleFlash() {
         //Retrieve the default camera device.
@@ -194,15 +171,6 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate {
         }
     }
     
-    func loadModel(path: String) -> SCNNode {
-        //Loads .DAE or .SCN models with a wrapper to enable material manipulation.
-        let virtualObjectScene = SCNScene(named: path)
-        let wrapperNode = SCNNode()
-        for child: SCNNode in (virtualObjectScene?.rootNode.childNodes)! {
-            wrapperNode.addChildNode(child)
-        }
-        return wrapperNode
-    }
     
     func playUISound(named: String) {
         //The proper way to play the sounds located in UI Sounds.
@@ -210,40 +178,6 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate {
             self.uiSoundPlayer = AVPlayer(url: selectedSound)
             self.uiSoundPlayer.play()
         }
-    }
-    
-    
-    func pointerLocation() -> SCNVector3 {
-        //A 3D coordinate based on the real world position in front of the users device.
-        let pointOfView = sceneView.pointOfView
-        let transform = pointOfView!.transform
-        let orientation = SCNVector3(-transform.m31,-transform.m32,-transform.m33)
-        //facing direction, did not change location
-        let location = SCNVector3(transform.m41,transform.m42,transform.m43)
-        //direction location changed
-        let currentPositionOfCamera = orientation + location
-        return currentPositionOfCamera
-    }
-    
-    func removePreviousPointer() {
-        //Removes all 3DOF Pointers
-        pointersInScene.last?.removeFromParentNode()
-    }
-    
-    func removePreviousCursor() {
-        //Removes all 6DOF Pointers
-        if cursorsInScene.isEmpty == false {
-            cursorsInScene.last!.removeFromParentNode()
-            cursorsInScene.removeAll()
-        }
-    }
-    
-    func printTimeElapsedWhenRunningCode(title:String, operation:()->()) {
-        //Measure the time it takes to run a specific line of code!
-        let startTime = CFAbsoluteTimeGetCurrent()
-        operation()
-        let timeElapsed = CFAbsoluteTimeGetCurrent() - startTime
-        print("-> AugmaOS: Time elapsed for \(title): \(timeElapsed) s.")
     }
     
     func resetMiniTutorials() {
@@ -279,139 +213,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate {
         softResetAugmaOS()
         hapticTap()
     }
-    
-    
-    //MARK: HIT TEST FUNCTIONS
-    
-    func hitTestFeaturePoints(with: UITapGestureRecognizer) -> SCNVector3 {
-        //Map those 2D coordinates on our ARSCNView
-        let touchCoordinates = with.location(in: sceneView)
-        //Perform a 3D hit-test using our touch coordinates!
-        //        let hitTest = sceneView.hitTest(touchCoordinates)
-        //Narrow our results to only return feature points detected by ARKit!
-        let hitTestResults : [ARHitTestResult] = self.sceneView.hitTest(touchCoordinates, types: [.featurePoint])
-        var hitPosition = SCNVector3(0,0,0)
-        if let closestResult = hitTestResults.first {
-            // Translate the hit-test results location into proper 3D coordinates for our return value!
-            let hitTransform : matrix_float4x4 = closestResult.worldTransform
-            hitPosition = SCNVector3Make(hitTransform.columns.3.x, hitTransform.columns.3.y, hitTransform.columns.3.z)
-        }
-        return hitPosition
-    }
-    
-    
-    func hitTestForSpecialNodes(sender: UITapGestureRecognizer) -> Bool {
-        let sceneViewTapped = sender.view as! SCNView
-        let touchCoordinates = sender.location(in: sceneViewTapped)
-        let hitTest = sceneView.hitTest(touchCoordinates)
-        var UITapped = false
-        
-        if hitTest.isEmpty == false {
-            let results = hitTest.first!
-            switch results.node.name {
-            
-            case "Special Node":
-                results.node.parent?.enumerateChildNodes { (notSelected, _) in
-                    notSelected.opacity = 0
-                }
-                results.node.opacity = 1
-                playUISound(named: "UISound - Medium Tap")
-                UITapped = true
-                
-            default:
-                if results.node.name != nil {
-                    log(note: "-> AugmaOS Gesture: Tapped a node named \(results.node.name!)")
-                }
-            }}
-        return UITapped
-    }
-    
-    func hitTestCenter() -> SCNVector3 {
-        //Shoots a hittest from the center of the screen.
-        let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
-        let hitTestResults : [ARHitTestResult] = self.sceneView.hitTest(screenCenter, types: [.featurePoint])
-        var hitPosition = SCNVector3()
-        //        print(hitTestResults)
-        
-        if let closestResult = hitTestResults.first {
-            // Get Coordinates of HitTest
-            let hitTransform : matrix_float4x4 = closestResult.worldTransform
-            hitPosition = SCNVector3Make(hitTransform.columns.3.x, hitTransform.columns.3.y, hitTransform.columns.3.z)
-        }
-        return hitPosition
-    }
-    
-    
-    func hitTestSCNContent(with: UITapGestureRecognizer) -> SCNHitTestResult? {
-        let touchCoordinates = with.location(in: sceneView)
-        let hitTestResults : [SCNHitTestResult] = self.sceneView.hitTest(touchCoordinates, options: [SCNHitTestOption.firstFoundOnly : (Any).self])
-        return hitTestResults.first
-    }
-    
-    func hitTestCenterSCNContent() -> SCNHitTestResult? {
-        let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
-        let hitTestResults : [SCNHitTestResult] = self.sceneView.hitTest(screenCenter, options: [SCNHitTestOption.firstFoundOnly : (Any).self])
-        return hitTestResults.first
-    }
-    
-    func hitTestPlane(with: UITapGestureRecognizer) -> SCNVector3 {
-        //NOT REALLY USED PREVIOUSLY
-        //Map those 2D coordinates on our ARSCNView
-        let touchCoordinates = with.location(in: sceneView)
-        //Perform a 3D hit-test using our touch coordinates!
-        //        let hitTest = sceneView.hitTest(touchCoordinates)
-        //Narrow our results to only return feature points detected by ARKit!
-        let hitTestResults : [ARHitTestResult] = self.sceneView.hitTest(touchCoordinates, types: [.existingPlaneUsingExtent])
-        var hitPosition = SCNVector3(0,0,0)
-        if let closestResult = hitTestResults.first {
-            // Translate the hit-test results location into proper 3D coordinates for our return value!
-            let hitTransform : matrix_float4x4 = closestResult.worldTransform
-            hitPosition = SCNVector3Make(hitTransform.columns.3.x, hitTransform.columns.3.y, hitTransform.columns.3.z)
-        }
-        return hitPosition
-    }
-    
-    func contextForPlane() -> pointerContext {
-        //Returns rich information about any plane detected in a hittest.
-        let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
-        let hitTestResults : [ARHitTestResult] = self.sceneView.hitTest(screenCenter, types: [.existingPlaneUsingExtent])
-        let context = pointerContext()
-        //        print(hitTestResults)
-        if let closestResult = hitTestResults.first {
-            let hitTransform : matrix_float4x4 = closestResult.worldTransform
-            context.hitPosition = SCNVector3Make(hitTransform.columns.3.x, hitTransform.columns.3.y, hitTransform.columns.3.z)
-            context.planeHit = true
-            guard let planeAnchor = closestResult.anchor as? ARPlaneAnchor else { return context }
-            //iOS 11.3 & LATER
-            if planeAnchor.alignment == .vertical {
-                context.vertical = true
-            } else if planeAnchor.alignment == .horizontal {
-                context.vertical = false
-            }
-        }
-        return context
-    }
-    
-    func contextForPoints() -> pointerContext {
-        //Returns rich information about any feature point detected in a hittest.
-        let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
-        let hitTestResults : [ARHitTestResult] = self.sceneView.hitTest(screenCenter, types: [.featurePoint])
-        let context = pointerContext()
-        if let closestResult = hitTestResults.first {
-            // Get Coordinates of HitTest
-            let hitTransform : matrix_float4x4 = closestResult.worldTransform
-            context.hitPosition = SCNVector3Make(hitTransform.columns.3.x, hitTransform.columns.3.y, hitTransform.columns.3.z)
-            context.planeHit = true
-        }
-        return context
-    }
-    
-    class pointerContext {
-        //A data rich definition returned from a hit test.
-        var planeHit : Bool!
-        var hitPosition : SCNVector3?
-        var vertical : Bool?
-    }
+
     
     
     
@@ -491,21 +293,7 @@ extension SCNNode {
         let output = self.childNode(withName: "augmaID", recursively: true)?.name
         return output
     }
-    
-    
-    //    func highlight( _ highlighted : Bool = true, _ highlightedBitMask : Int = 2 ) {
-    //        categoryBitMask = highlightedBitMask
-    //        for child in self.childNodes {
-    //            child.highlight()
-    //        }
-    //    }
-    //
-    //    func unHighlight( _ highlighted : Bool = false, _ highlightedBitMask : Int = 2 ) {
-    //        categoryBitMask = 1
-    //        for child in self.childNodes {
-    //            child.unHighlight()
-    //        }
-    //    }
+
     
     func lineNode(from startPoint: SCNVector3, to endPoint: SCNVector3, radius: CGFloat, color: UIColor) -> SCNNode {
         let w = SCNVector3(x: endPoint.x-startPoint.x, y: endPoint.y-startPoint.y, z: endPoint.z-startPoint.z)

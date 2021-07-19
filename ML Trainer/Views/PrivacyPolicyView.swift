@@ -37,10 +37,7 @@ struct PrivacyPolicyView: View {
             }
             
             Section {
-                Text("Thank you for using ML Trainer!")
-                    .bold()
-                    .multilineTextAlignment(.center)
-                    .padding()
+                TitleLabelView(titleText: "Thank you for using ML Trainer!", iconSystemName: "heart", color: .blue)
             }
             
             Section {

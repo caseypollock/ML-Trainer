@@ -22,7 +22,7 @@ struct MLTrainerSettings: View {
     var body: some View {
         Form {
             Section {
-                TitleLabelView(titleText: "Settings", iconSystemName: "gearshape.fill", color: .blue)
+                TitleLabelView(titleText: "Settings", iconSystemName: "gearshape.fill", color: .purple)
                     .padding()
             }
             
@@ -97,24 +97,24 @@ struct MLTrainerSettings: View {
             
             
             //Tutorials
-            Section {
-                Button(action: {
-                    showTutorials = true
-                }) {
-                    LazyHStack {
-                        TitleLabelView(titleText: "", iconSystemName: "hand.draw.fill", color: .pink)
-                        Text("Tutorials")
-                            .bold()
-                            .font(.title3)
-                            .multilineTextAlignment(.trailing)
-                    }
-                    .frame(height: 10)
-                    .padding()
-                }
-                .sheet(isPresented: $showTutorials) {
-                    TutorialsView()
-                }
-            }
+//            Section {
+//                Button(action: {
+//                    showTutorials = true
+//                }) {
+//                    LazyHStack {
+//                        TitleLabelView(titleText: "", iconSystemName: "hand.draw.fill", color: .pink)
+//                        Text("Tutorials")
+//                            .bold()
+//                            .font(.title3)
+//                            .multilineTextAlignment(.trailing)
+//                    }
+//                    .frame(height: 10)
+//                    .padding()
+//                }
+//                .sheet(isPresented: $showTutorials) {
+//                    TutorialsView()
+//                }
+//            }
             
             
             Section {
@@ -154,7 +154,7 @@ struct MLTrainerSettings: View {
                     
                     Spacer(minLength: 20)
                     
-                    Text("An easy to use, open source developer tool that records training data for machine learning models!")
+                    Text("An easy to use, open source tool to help developers record training data for machine learning models!")
                         .multilineTextAlignment(.center)
                     
                     Spacer(minLength: 20)
@@ -196,24 +196,6 @@ struct MLTrainerSettings: View {
                 }//End of VStack
             }
             
-            
-            Section {
-                LazyVStack {
-                    Spacer(minLength: 24)
-                    Text("Thank you for using ML Trainer!")
-                        .bold()
-                        .multilineTextAlignment(.center)
-                    
-                    RoundedCubeImage(name: "NFM Logo (clear)", size: 300, curve: 0)
-                }//End of VStack
-                
-                Text("Near Future Marketing Inc. (2021)")
-                    .bold()
-                    .font(.title2)
-                    .multilineTextAlignment(.center)
-                    .padding()
-            }
-            
             Section {
                 //Privacy Policy
                 Button(action: {
@@ -233,6 +215,29 @@ struct MLTrainerSettings: View {
                     PrivacyPolicyView()
                 }
             }
+            
+            
+            Section {
+                LazyVStack {
+                    Spacer(minLength: 24)
+//                    Text("Thank you for using ML Trainer!")
+//                        .bold()
+//                        .multilineTextAlignment(.center)
+                    TitleLabelView(titleText: "Thank you for using ML Trainer!", iconSystemName: "heart.fill", color: .pink)
+                    
+                    RoundedCubeImage(name: "NFM Logo (clear)", size: 300, curve: 0)
+                    
+                    Text("Near Future Marketing Inc. (2021)")
+                        .bold()
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }//End of VStack
+            
+            }
+            
+            
+            
             
             
         }//End of Form

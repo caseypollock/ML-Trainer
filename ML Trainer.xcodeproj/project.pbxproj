@@ -12,6 +12,7 @@
 		D71B3C722683D36C00F9033D /* TitleLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B3C712683D36C00F9033D /* TitleLabelView.swift */; };
 		D71B3C742683D7A700F9033D /* RoundedCubeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B3C732683D7A700F9033D /* RoundedCubeImage.swift */; };
 		D71B3C762683DB3C00F9033D /* GlobalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71B3C752683DB3C00F9033D /* GlobalSettings.swift */; };
+		D71D4FE9268AC96B00FF610A /* SizingExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71D4FE8268AC96B00FF610A /* SizingExample.swift */; };
 		D72E4FB826817B8F00468B73 /* DatedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72E4FB726817B8F00468B73 /* DatedEvent.swift */; };
 		D73C037F2680585B004A9522 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C03752680585B004A9522 /* ActionButton.swift */; };
 		D73C03812680585B004A9522 /* GuidesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C03772680585B004A9522 /* GuidesView.swift */; };
@@ -38,6 +39,7 @@
 		D71B3C712683D36C00F9033D /* TitleLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleLabelView.swift; sourceTree = "<group>"; };
 		D71B3C732683D7A700F9033D /* RoundedCubeImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCubeImage.swift; sourceTree = "<group>"; };
 		D71B3C752683DB3C00F9033D /* GlobalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSettings.swift; sourceTree = "<group>"; };
+		D71D4FE8268AC96B00FF610A /* SizingExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizingExample.swift; sourceTree = "<group>"; };
 		D72E4FB726817B8F00468B73 /* DatedEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatedEvent.swift; sourceTree = "<group>"; };
 		D73C03752680585B004A9522 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		D73C03772680585B004A9522 /* GuidesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidesView.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				D71B3C6F2683D0CF00F9033D /* TutorialsView.swift */,
 				D7E5FFF12681205700A4A712 /* PrivacyPolicyView.swift */,
 				D7DC371126804E1A0007AF5D /* AugmaOSView.swift */,
+				D71D4FE8268AC96B00FF610A /* SizingExample.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				D7BD68C326828CB70000FFE2 /* CrosshairsView.swift in Sources */,
 				D7BD68C92682AB920000FFE2 /* TextButton.swift in Sources */,
 				D701FB9B2683B87A0060479B /* Browser.swift in Sources */,
+				D71D4FE9268AC96B00FF610A /* SizingExample.swift in Sources */,
 				D72E4FB826817B8F00468B73 /* DatedEvent.swift in Sources */,
 				D71B3C722683D36C00F9033D /* TitleLabelView.swift in Sources */,
 				D7DC371226804E1A0007AF5D /* AugmaOSView.swift in Sources */,
@@ -377,7 +381,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ML Trainer/Preview Content\"";
-				DEVELOPMENT_TEAM = W82Y7WX43R;
+				DEVELOPMENT_TEAM = LA8S4LB673;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ML Trainer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

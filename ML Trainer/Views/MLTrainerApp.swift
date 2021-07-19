@@ -81,7 +81,7 @@ struct MLTrainerApp: View {
                         showTrashcan = false
                         augmaOS.hapticTap()
                     }, label: {
-                        SFSymbolButton(symbol: "trash.fill", fontSize: 26, shadow: 3)
+                        SFSymbolButton(symbol: "trash.fill", fontSize: 27, shadow: 3)
                     })
                     .frame(width: 40, height: 40)
                     .offset(x: -60, y: 0)
@@ -98,7 +98,7 @@ struct MLTrainerApp: View {
                     augmaOS.toggleFlash()
                     augmaOS.hapticTap()
                 }, label: {
-                    SFSymbolButton(symbol: flashLightIcon, fontSize: 26, shadow: 3)
+                    SFSymbolButton(symbol: flashLightIcon, fontSize: 27, shadow: 3)
 
                 })
                 .frame(width: 40, height: 40)
@@ -108,7 +108,7 @@ struct MLTrainerApp: View {
                     presentSettingsApp = true
                     augmaOS.hapticTap()
                 }, label: {
-                    SFSymbolButton(symbol: "gearshape.fill", fontSize: 26, shadow: 3)
+                    SFSymbolButton(symbol: "gearshape.fill", fontSize: 27, shadow: 3)
                 })
                 .frame(width: 40, height: 40)
                 .offset(x: 60, y: 0)
