@@ -124,7 +124,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate {
     func helloWorld() {
         print("")
         print("--- Copyright © 2021 Near Future Marketing Inc. ---")
-        print("\nWelcome to AugmaOS, a reality engine created independently by Casey Pollock! 📲 Enjoy!")
+        print("\nWelcome to AugmaOS, a reality engine created independently by Casey Pollock! 👨🏾‍💻📲 Enjoy!")
         print("")
     }
     

@@ -37,16 +37,12 @@ struct PrivacyPolicyView: View {
             }
             
             Section {
-                TitleLabelView(titleText: "Thank you for using ML Trainer!", iconSystemName: "heart", color: .blue)
-            }
-            
-            Section {
                 //Privacy Policy
                 Button(action: {
                     showSourceCode = true
                 }) {
                     LazyHStack {
-                        TitleLabelView(titleText: "View Source Code", iconSystemName: "swift", color: .pink)
+                        TitleLabelView(titleText: "View Our Source Code", iconSystemName: "swift", color: .pink)
                         Text("")
                             .foregroundColor(Color.black)
                             .bold()

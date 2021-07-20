@@ -22,7 +22,7 @@ struct MLTrainerSettings: View {
     var body: some View {
         Form {
             Section {
-                TitleLabelView(titleText: "Settings", iconSystemName: "gearshape.fill", color: .purple)
+                TitleLabelView(titleText: "Settings", iconSystemName: "gearshape.fill", color: .blue)
                     .padding()
             }
             
@@ -94,27 +94,7 @@ struct MLTrainerSettings: View {
                     Text("Hide Status Bar")
                 })
             }//End of Section
-            
-            
-            //Tutorials
-//            Section {
-//                Button(action: {
-//                    showTutorials = true
-//                }) {
-//                    LazyHStack {
-//                        TitleLabelView(titleText: "", iconSystemName: "hand.draw.fill", color: .pink)
-//                        Text("Tutorials")
-//                            .bold()
-//                            .font(.title3)
-//                            .multilineTextAlignment(.trailing)
-//                    }
-//                    .frame(height: 10)
-//                    .padding()
-//                }
-//                .sheet(isPresented: $showTutorials) {
-//                    TutorialsView()
-//                }
-//            }
+
             
             
             Section {
@@ -131,7 +111,10 @@ struct MLTrainerSettings: View {
                         .multilineTextAlignment(    .center)
                         .shadow(radius: 1)
                     
-                    RoundedCubeImage(name: "Test", size: 300, curve: 0)
+                    RoundedCubeImage(name: "ML Trainer (App Store Icon)", size: 300, curve: 42)
+                        .shadow(radius: 5)
+                    
+                    Spacer(minLength: 30)
                     
                     Text("Data collection made easy!")
                         .italic()
@@ -195,6 +178,26 @@ struct MLTrainerSettings: View {
                     Spacer()
                 }//End of VStack
             }
+        
+            
+            Section {
+                LazyVStack {
+                    Spacer(minLength: 24)
+//                    Text("Thank you for using ML Trainer!")
+//                        .bold()
+//                        .multilineTextAlignment(.center)
+                    TitleLabelView(titleText: "Thank you for using ML Trainer!", iconSystemName: "heart.fill", color: .pink)
+                    
+                    RoundedCubeImage(name: "NFM Logo (clear)", size: 300, curve: 0)
+                    
+                    Text("Near Future Marketing Inc. (2021)")
+                        .bold()
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                }//End of VStack
+            }
+            
             
             Section {
                 //Privacy Policy
@@ -214,26 +217,6 @@ struct MLTrainerSettings: View {
                 .sheet(isPresented: $showPrivacyPolicy) {
                     PrivacyPolicyView()
                 }
-            }
-            
-            
-            Section {
-                LazyVStack {
-                    Spacer(minLength: 24)
-//                    Text("Thank you for using ML Trainer!")
-//                        .bold()
-//                        .multilineTextAlignment(.center)
-                    TitleLabelView(titleText: "Thank you for using ML Trainer!", iconSystemName: "heart.fill", color: .pink)
-                    
-                    RoundedCubeImage(name: "NFM Logo (clear)", size: 300, curve: 0)
-                    
-                    Text("Near Future Marketing Inc. (2021)")
-                        .bold()
-                        .font(.title2)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                }//End of VStack
-            
             }
             
             

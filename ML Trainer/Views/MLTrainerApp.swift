@@ -296,7 +296,6 @@ struct MLTrainerApp: View {
         }//End of ZStack
         .statusBar(hidden: userSettings.hideStatusBar)
         .onAppear() {
-            print("HOME SCREEN APPEARED!")
             if userSettings.loopSetting == 0 {
                 userSettings.hideStatusBar = true
                 userSettings.loopSetting = 5

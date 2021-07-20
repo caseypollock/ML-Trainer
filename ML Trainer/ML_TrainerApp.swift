@@ -1,7 +1,6 @@
 //
 //  ML_TrainerApp.swift
 //  ML Trainer
-//
 //  Created by Casey Pollock on 6/20/21.
 //
 
