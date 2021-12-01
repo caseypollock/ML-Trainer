@@ -13,5 +13,5 @@ class UserSettings : ObservableObject {
     @Published var hideStatusBar = UserDefaults.standard.bool(forKey: "hideStatusBar")
     @Published var loopSetting = UserDefaults.standard.integer(forKey: "loopSetting")
     @Published var loopTab = UserDefaults.standard.integer(forKey: "loopTab")
-    @Published var scansRemaining = 0
+    @Published var scansRemaining = UserDefaults.standard.integer(forKey: "scansRemaining")
 }

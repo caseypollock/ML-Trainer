@@ -393,7 +393,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Near-Future-Marketing.ML-Trainer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -405,7 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"ML Trainer/Preview Content\"";
-				DEVELOPMENT_TEAM = W82Y7WX43R;
+				DEVELOPMENT_TEAM = LA8S4LB673;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "ML Trainer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -416,7 +416,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Near-Future-Marketing.ML-Trainer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

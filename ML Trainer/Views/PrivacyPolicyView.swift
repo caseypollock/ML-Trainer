@@ -37,12 +37,18 @@ struct PrivacyPolicyView: View {
             }
             
             Section {
+                Text("For additional questions, please reach out via email: \n\nprivacy@nearfuture.marketing")
+                    .multilineTextAlignment(.center)
+                    .padding()
+            }
+            
+            Section {
                 //Privacy Policy
                 Button(action: {
                     showSourceCode = true
                 }) {
                     LazyHStack {
-                        TitleLabelView(titleText: "View Our Source Code", iconSystemName: "swift", color: .pink)
+                        TitleLabelView(titleText: "View Source Code", iconSystemName: "swift", color: .pink)
                         Text("")
                             .foregroundColor(Color.black)
                             .bold()

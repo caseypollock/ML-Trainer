@@ -144,6 +144,10 @@ struct MLTrainerApp: View {
                     })
                     
                     Button(action: {
+                        if userSettings.scansRemaining == 0 {
+                            // Fixes default user settings after launch.
+                            userSettings.scansRemaining = 5
+                        }
                         recordingScans = true
                         Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { [self] timer in
                             userSettings.scansRemaining -= 1
@@ -284,6 +288,7 @@ struct MLTrainerApp: View {
                             augmaOS.hapticTap()
                         }
                     }
+
                     augmaOS.hapticTap()
                 }, label: {
                     ActionButton(firstColor: .blue, textColor: .white, cellWidth: 130, cellHeight: 50, cellText: "Scan", cellIcon: "camera.fill", systemSymbol: true, curve: 100, reversed: false, gradient: false)

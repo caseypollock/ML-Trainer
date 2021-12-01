@@ -94,6 +94,27 @@ struct MLTrainerSettings: View {
                     Text("Hide Status Bar")
                 })
             }//End of Section
+            
+            //Tutorials
+            Section {
+                Button(action: {
+                    showTutorials = true
+                }) {
+                    LazyHStack {
+                        TitleLabelView(titleText: "", iconSystemName: "hand.draw.fill", color: .purple)
+                        Text("Tutorials")
+                            .foregroundColor(Color.black)
+                            .bold()
+                            .font(.title3)
+                            .multilineTextAlignment(.trailing)
+                    }
+                    .frame(height: 10)
+                    .padding()
+                }
+                .sheet(isPresented: $showTutorials) {
+                    TutorialsView()
+                }
+            }
 
             
             

@@ -23,7 +23,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>For scanning frames in augmented reality!</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To save scans to your photos!</string>
+	<string>To save scanned images to your photos!</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
